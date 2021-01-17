@@ -1,7 +1,5 @@
 package com.company;
-import java.util.Arrays;
-import java.util.List;
-import static java.util.stream.Collectors.toList;
+import java.util.stream.IntStream;
 
 public class Main
 {
@@ -12,22 +10,16 @@ public class Main
         double a3 = Math.random() * 20 - 10;
         double a4 = Math.random() * 20 - 10;
         double a5 = Math.random() * 20 - 10;
-        double a6 = Math.random() * 20 - 10;
-        double a7 = Math.random() * 20 - 10;
-        double a8 = Math.random() * 20 - 10;
-        double a9 = Math.random() * 20 - 10;
-        double a10 = Math.random() * 20 - 10;
 
-        double[] nums = new double[] { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10 };
-        int[] index = { 0 };
-        List<Double> sortedNumbers = Arrays.stream(nums).sorted().peek(number ->
-        {
-            if (number < 0)
-            {
-                index[0]++;
-            }
-        }).boxed().collect(toList());
-        System.out.println(sortedNumbers.subList(0, index[0]));
-        System.out.println(sortedNumbers.subList(index[0], sortedNumbers.size()));
+        int[] numbers = { ((int)a1), ((int)a2), ((int)a3), ((int)a4), ((int)a5) };
+
+        long count1 = IntStream.of(numbers).filter(i -> i > 0).count();
+        System.out.println("Количество пол. чисел:\t" + count1);
+
+        long count2 = IntStream.of(numbers).filter(i -> i < 0).count();
+        System.out.println("Количество отр. чисел:\t" + count2);
+
+        long count3 = IntStream.of(numbers).filter(i -> i == 0).count();
+        System.out.println("Количество нулей:\t\t" + count3);
     }
 }
